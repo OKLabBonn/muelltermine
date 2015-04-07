@@ -9,13 +9,7 @@
 
     header('Content-Type: text/html; charset=utf-8');
 
-    $username = "root";
-    $password = "rootpass";
-    $hostname = "localhost";
-    $dbname = "muellkalender";
-
-    //Datenbankverbindung aufbauen
-    $mysqli = new mysqli($hostname, $username, $password, $dbname);
+    include_once "_db-connect.php";
 
     $userstreet = $_GET['userstreet'];
     ?>
