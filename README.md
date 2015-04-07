@@ -5,9 +5,12 @@ Die Müll-Abfuhr Termine von BonnOrange transparent machen und als .ics zur Verf
 - CSV in MySQL-DB importiert
 - Straßen per Auswahlliste selektierbar
 - Darstellung der Ergebnisse in einer Tabelle
+- Bereits abgelaufene Termine sind markiert
 
 
 ## Offen
 - Umlaut-Problem bei Daten die aus der Datenbank kommen
 - Auswahl der Straße per Typeahead
+- Abfrage der Hausnummer und deren Auswertung (Beispiel: Adenauerallee)
 - ICS aus Ergebnis generieren und als Download anbieten ([Beispiel bei Stackoverflow](http://stackoverflow.com/questions/12739247/how-to-generate-ics-file-using-php-for-a-given-date-range-and-time).)
+- Hübsch machen 
