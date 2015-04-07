@@ -1,5 +1,5 @@
 # Müllkalender der Stadt Bonn
-Die Müll-Abfuhr Termine von BonnOrange transparent machen und als .ics zur Verfügung stellen. Diese stehen unter [http://opendata.bonn.de/dataset/abfallplaner-m%C3%BCllabfuhrtermine](http://opendata.bonn.de/dataset/abfallplaner-m%C3%BCllabfuhrtermine) als CSV und XLS zur Verfügung.
+Die Müll-Abfuhr Termine von BonnOrange transparent machen und als .ics zur Verfügung stellen. Diese stehen unter [opendata.bonn.de](http://opendata.bonn.de/dataset/abfallplaner-m%C3%BCllabfuhrtermine) als CSV und XLS zur Verfügung.
 
 ## Erledigt
 - CSV in MySQL-DB importiert
