@@ -1,0 +1,411 @@
+// LEERE ZEILE FINDEN
+(.*?),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+// DATUM IN CSV ÄNDERN
+find: ([0-9]{2})\.+([0-9]{2})\.+([0-9]{4})
+replace: \3-\2-\1
+
+// LOGIN ZU MYSQL
+mysql --host=localhost --user=root --password=rootpass --local-infile=1
+
+// CSV-DATEI LADEN (SQL)
+load data local infile 'sites/abfuhrtermine2015.csv' into table muellkalender  fields terminated by ','  enclosed by '"'  lines terminated by '\n';
+
+// TABELLE ANLEGEN (SQL)
+CREATE TABLE muellkalender (
+  PLANUNGNR int,
+  PLAN_BEZ varchar(50),
+  PLAN_AB date,
+  PLAN_BIS date,
+  AUFGTURNUS varchar(250),
+  STRABSCHNR varchar(250),
+  STRASSE1 varchar(250),
+  ORT1 varchar(250),
+  PLZ1 int,
+  HNR_GE_AB int,
+  HNR_GE_BIS int,
+  HNR_UG_AB int,
+  HNR_UG_BIS int,
+  TERMIN000 date,
+  TERMIN001 date,
+  TERMIN002 date,
+  TERMIN003 date,
+  TERMIN004 date,
+  TERMIN005 date,
+  TERMIN006 date,
+  TERMIN007 date,
+  TERMIN008 date,
+  TERMIN009 date,
+  TERMIN010 date,
+  TERMIN011 date,
+  TERMIN012 date,
+  TERMIN013 date,
+  TERMIN014 date,
+  TERMIN015 date,
+  TERMIN016 date,
+  TERMIN017 date,
+  TERMIN018 date,
+  TERMIN019 date,
+  TERMIN020 date,
+  TERMIN021 date,
+  TERMIN022 date,
+  TERMIN023 date,
+  TERMIN024 date,
+  TERMIN025 date,
+  TERMIN026 date,
+  TERMIN027 date,
+  TERMIN028 date,
+  TERMIN029 date,
+  TERMIN030 date,
+  TERMIN031 date,
+  TERMIN032 date,
+  TERMIN033 date,
+  TERMIN034 date,
+  TERMIN035 date,
+  TERMIN036 date,
+  TERMIN037 date,
+  TERMIN038 date,
+  TERMIN039 date,
+  TERMIN040 date,
+  TERMIN041 date,
+  TERMIN042 date,
+  TERMIN043 date,
+  TERMIN044 date,
+  TERMIN045 date,
+  TERMIN046 date,
+  TERMIN047 date,
+  TERMIN048 date,
+  TERMIN049 date,
+  TERMIN050 date,
+  TERMIN051 date,
+  TERMIN052 date,
+  TERMIN053 date,
+  TERMIN054 date,
+  TERMIN055 date,
+  TERMIN056 date,
+  TERMIN057 date,
+  TERMIN058 date,
+  TERMIN059 date,
+  TERMIN060 date,
+  TERMIN061 date,
+  TERMIN062 date,
+  TERMIN063 date,
+  TERMIN064 date,
+  TERMIN065 date,
+  TERMIN066 date,
+  TERMIN067 date,
+  TERMIN068 date,
+  TERMIN069 date,
+  TERMIN070 date,
+  TERMIN071 date,
+  TERMIN072 date,
+  TERMIN073 date,
+  TERMIN074 date,
+  TERMIN075 date,
+  TERMIN076 date,
+  TERMIN077 date,
+  TERMIN078 date,
+  TERMIN079 date,
+  TERMIN080 date,
+  TERMIN081 date,
+  TERMIN082 date,
+  TERMIN083 date,
+  TERMIN084 date,
+  TERMIN085 date,
+  TERMIN086 date,
+  TERMIN087 date,
+  TERMIN088 date,
+  TERMIN089 date,
+  TERMIN090 date,
+  TERMIN091 date,
+  TERMIN092 date,
+  TERMIN093 date,
+  TERMIN094 date,
+  TERMIN095 date,
+  TERMIN096 date,
+  TERMIN097 date,
+  TERMIN098 date,
+  TERMIN099 date,
+  TERMIN100 date,
+  TERMIN101 date,
+  TERMIN102 date,
+  TERMIN103 date,
+  TERMIN104 date,
+  TERMIN105 date,
+  TERMIN106 date,
+  TERMIN107 date,
+  TERMIN108 date,
+  TERMIN109 date,
+  TERMIN110 date,
+  TERMIN111 date,
+  TERMIN112 date,
+  TERMIN113 date,
+  TERMIN114 date,
+  TERMIN115 date,
+  TERMIN116 date,
+  TERMIN117 date,
+  TERMIN118 date,
+  TERMIN119 date,
+  TERMIN120 date,
+  TERMIN121 date,
+  TERMIN122 date,
+  TERMIN123 date,
+  TERMIN124 date,
+  TERMIN125 date,
+  TERMIN126 date,
+  TERMIN127 date,
+  TERMIN128 date,
+  TERMIN129 date,
+  TERMIN130 date,
+  TERMIN131 date,
+  TERMIN132 date,
+  TERMIN133 date,
+  TERMIN134 date,
+  TERMIN135 date,
+  TERMIN136 date,
+  TERMIN137 date,
+  TERMIN138 date,
+  TERMIN139 date,
+  TERMIN140 date,
+  TERMIN141 date,
+  TERMIN142 date,
+  TERMIN143 date,
+  TERMIN144 date,
+  TERMIN145 date,
+  TERMIN146 date,
+  TERMIN147 date,
+  TERMIN148 date,
+  TERMIN149 date,
+  TERMIN150 date,
+  TERMIN151 date,
+  TERMIN152 date,
+  TERMIN153 date,
+  TERMIN154 date,
+  TERMIN155 date,
+  TERMIN156 date,
+  TERMIN157 date,
+  TERMIN158 date,
+  TERMIN159 date,
+  TERMIN160 date,
+  TERMIN161 date,
+  TERMIN162 date,
+  TERMIN163 date,
+  TERMIN164 date,
+  TERMIN165 date,
+  TERMIN166 date,
+  TERMIN167 date,
+  TERMIN168 date,
+  TERMIN169 date,
+  TERMIN170 date,
+  TERMIN171 date,
+  TERMIN172 date,
+  TERMIN173 date,
+  TERMIN174 date,
+  TERMIN175 date,
+  TERMIN176 date,
+  TERMIN177 date,
+  TERMIN178 date,
+  TERMIN179 date,
+  TERMIN180 date,
+  TERMIN181 date,
+  TERMIN182 date,
+  TERMIN183 date,
+  TERMIN184 date,
+  TERMIN185 date,
+  TERMIN186 date,
+  TERMIN187 date,
+  TERMIN188 date,
+  TERMIN189 date
+);
+
+// LEERE ELEMENTE LÖSCHEN (SQL)
+DELETE FROM muellkalender WHERE TERMIN000 = '0000-00-00' AND
+                  TERMIN001 = '0000-00-00' AND
+                  TERMIN002 = '0000-00-00' AND
+                  TERMIN003 = '0000-00-00' AND
+                  TERMIN004 = '0000-00-00' AND
+                  TERMIN005 = '0000-00-00' AND
+                  TERMIN006 = '0000-00-00' AND
+                  TERMIN007 = '0000-00-00' AND
+                  TERMIN008 = '0000-00-00' AND
+                  TERMIN009 = '0000-00-00' AND
+                  TERMIN010 = '0000-00-00' AND
+                  TERMIN011 = '0000-00-00' AND
+                  TERMIN012 = '0000-00-00' AND
+                  TERMIN013 = '0000-00-00' AND
+                  TERMIN014 = '0000-00-00' AND
+                  TERMIN015 = '0000-00-00' AND
+                  TERMIN016 = '0000-00-00' AND
+                  TERMIN017 = '0000-00-00' AND
+                  TERMIN018 = '0000-00-00' AND
+                  TERMIN019 = '0000-00-00' AND
+                  TERMIN020 = '0000-00-00' AND
+                  TERMIN021 = '0000-00-00' AND
+                  TERMIN022 = '0000-00-00' AND
+                  TERMIN023 = '0000-00-00' AND
+                  TERMIN024 = '0000-00-00' AND
+                  TERMIN025 = '0000-00-00' AND
+                  TERMIN026 = '0000-00-00' AND
+                  TERMIN027 = '0000-00-00' AND
+                  TERMIN028 = '0000-00-00' AND
+                  TERMIN029 = '0000-00-00' AND
+                  TERMIN030 = '0000-00-00' AND
+                  TERMIN031 = '0000-00-00' AND
+                  TERMIN032 = '0000-00-00' AND
+                  TERMIN033 = '0000-00-00' AND
+                  TERMIN034 = '0000-00-00' AND
+                  TERMIN035 = '0000-00-00' AND
+                  TERMIN036 = '0000-00-00' AND
+                  TERMIN037 = '0000-00-00' AND
+                  TERMIN038 = '0000-00-00' AND
+                  TERMIN039 = '0000-00-00' AND
+                  TERMIN040 = '0000-00-00' AND
+                  TERMIN041 = '0000-00-00' AND
+                  TERMIN042 = '0000-00-00' AND
+                  TERMIN043 = '0000-00-00' AND
+                  TERMIN044 = '0000-00-00' AND
+                  TERMIN045 = '0000-00-00' AND
+                  TERMIN046 = '0000-00-00' AND
+                  TERMIN047 = '0000-00-00' AND
+                  TERMIN048 = '0000-00-00' AND
+                  TERMIN049 = '0000-00-00' AND
+                  TERMIN050 = '0000-00-00' AND
+                  TERMIN051 = '0000-00-00' AND
+                  TERMIN052 = '0000-00-00' AND
+                  TERMIN053 = '0000-00-00' AND
+                  TERMIN054 = '0000-00-00' AND
+                  TERMIN055 = '0000-00-00' AND
+                  TERMIN056 = '0000-00-00' AND
+                  TERMIN057 = '0000-00-00' AND
+                  TERMIN058 = '0000-00-00' AND
+                  TERMIN059 = '0000-00-00' AND
+                  TERMIN060 = '0000-00-00' AND
+                  TERMIN061 = '0000-00-00' AND
+                  TERMIN062 = '0000-00-00' AND
+                  TERMIN063 = '0000-00-00' AND
+                  TERMIN064 = '0000-00-00' AND
+                  TERMIN065 = '0000-00-00' AND
+                  TERMIN066 = '0000-00-00' AND
+                  TERMIN067 = '0000-00-00' AND
+                  TERMIN068 = '0000-00-00' AND
+                  TERMIN069 = '0000-00-00' AND
+                  TERMIN070 = '0000-00-00' AND
+                  TERMIN071 = '0000-00-00' AND
+                  TERMIN072 = '0000-00-00' AND
+                  TERMIN073 = '0000-00-00' AND
+                  TERMIN074 = '0000-00-00' AND
+                  TERMIN075 = '0000-00-00' AND
+                  TERMIN076 = '0000-00-00' AND
+                  TERMIN077 = '0000-00-00' AND
+                  TERMIN078 = '0000-00-00' AND
+                  TERMIN079 = '0000-00-00' AND
+                  TERMIN080 = '0000-00-00' AND
+                  TERMIN081 = '0000-00-00' AND
+                  TERMIN082 = '0000-00-00' AND
+                  TERMIN083 = '0000-00-00' AND
+                  TERMIN084 = '0000-00-00' AND
+                  TERMIN085 = '0000-00-00' AND
+                  TERMIN086 = '0000-00-00' AND
+                  TERMIN087 = '0000-00-00' AND
+                  TERMIN088 = '0000-00-00' AND
+                  TERMIN089 = '0000-00-00' AND
+                  TERMIN090 = '0000-00-00' AND
+                  TERMIN091 = '0000-00-00' AND
+                  TERMIN092 = '0000-00-00' AND
+                  TERMIN093 = '0000-00-00' AND
+                  TERMIN094 = '0000-00-00' AND
+                  TERMIN095 = '0000-00-00' AND
+                  TERMIN096 = '0000-00-00' AND
+                  TERMIN097 = '0000-00-00' AND
+                  TERMIN098 = '0000-00-00' AND
+                  TERMIN099 = '0000-00-00' AND
+                  TERMIN100 = '0000-00-00' AND
+                  TERMIN101 = '0000-00-00' AND
+                  TERMIN102 = '0000-00-00' AND
+                  TERMIN103 = '0000-00-00' AND
+                  TERMIN104 = '0000-00-00' AND
+                  TERMIN105 = '0000-00-00' AND
+                  TERMIN106 = '0000-00-00' AND
+                  TERMIN107 = '0000-00-00' AND
+                  TERMIN108 = '0000-00-00' AND
+                  TERMIN109 = '0000-00-00' AND
+                  TERMIN110 = '0000-00-00' AND
+                  TERMIN111 = '0000-00-00' AND
+                  TERMIN112 = '0000-00-00' AND
+                  TERMIN113 = '0000-00-00' AND
+                  TERMIN114 = '0000-00-00' AND
+                  TERMIN115 = '0000-00-00' AND
+                  TERMIN116 = '0000-00-00' AND
+                  TERMIN117 = '0000-00-00' AND
+                  TERMIN118 = '0000-00-00' AND
+                  TERMIN119 = '0000-00-00' AND
+                  TERMIN120 = '0000-00-00' AND
+                  TERMIN121 = '0000-00-00' AND
+                  TERMIN122 = '0000-00-00' AND
+                  TERMIN123 = '0000-00-00' AND
+                  TERMIN124 = '0000-00-00' AND
+                  TERMIN125 = '0000-00-00' AND
+                  TERMIN126 = '0000-00-00' AND
+                  TERMIN127 = '0000-00-00' AND
+                  TERMIN128 = '0000-00-00' AND
+                  TERMIN129 = '0000-00-00' AND
+                  TERMIN130 = '0000-00-00' AND
+                  TERMIN131 = '0000-00-00' AND
+                  TERMIN132 = '0000-00-00' AND
+                  TERMIN133 = '0000-00-00' AND
+                  TERMIN134 = '0000-00-00' AND
+                  TERMIN135 = '0000-00-00' AND
+                  TERMIN136 = '0000-00-00' AND
+                  TERMIN137 = '0000-00-00' AND
+                  TERMIN138 = '0000-00-00' AND
+                  TERMIN139 = '0000-00-00' AND
+                  TERMIN140 = '0000-00-00' AND
+                  TERMIN141 = '0000-00-00' AND
+                  TERMIN142 = '0000-00-00' AND
+                  TERMIN143 = '0000-00-00' AND
+                  TERMIN144 = '0000-00-00' AND
+                  TERMIN145 = '0000-00-00' AND
+                  TERMIN146 = '0000-00-00' AND
+                  TERMIN147 = '0000-00-00' AND
+                  TERMIN148 = '0000-00-00' AND
+                  TERMIN149 = '0000-00-00' AND
+                  TERMIN150 = '0000-00-00' AND
+                  TERMIN151 = '0000-00-00' AND
+                  TERMIN152 = '0000-00-00' AND
+                  TERMIN153 = '0000-00-00' AND
+                  TERMIN154 = '0000-00-00' AND
+                  TERMIN155 = '0000-00-00' AND
+                  TERMIN156 = '0000-00-00' AND
+                  TERMIN157 = '0000-00-00' AND
+                  TERMIN158 = '0000-00-00' AND
+                  TERMIN159 = '0000-00-00' AND
+                  TERMIN160 = '0000-00-00' AND
+                  TERMIN161 = '0000-00-00' AND
+                  TERMIN162 = '0000-00-00' AND
+                  TERMIN163 = '0000-00-00' AND
+                  TERMIN164 = '0000-00-00' AND
+                  TERMIN165 = '0000-00-00' AND
+                  TERMIN166 = '0000-00-00' AND
+                  TERMIN167 = '0000-00-00' AND
+                  TERMIN168 = '0000-00-00' AND
+                  TERMIN169 = '0000-00-00' AND
+                  TERMIN170 = '0000-00-00' AND
+                  TERMIN171 = '0000-00-00' AND
+                  TERMIN172 = '0000-00-00' AND
+                  TERMIN173 = '0000-00-00' AND
+                  TERMIN174 = '0000-00-00' AND
+                  TERMIN175 = '0000-00-00' AND
+                  TERMIN176 = '0000-00-00' AND
+                  TERMIN177 = '0000-00-00' AND
+                  TERMIN178 = '0000-00-00' AND
+                  TERMIN179 = '0000-00-00' AND
+                  TERMIN180 = '0000-00-00' AND
+                  TERMIN181 = '0000-00-00' AND
+                  TERMIN182 = '0000-00-00' AND
+                  TERMIN183 = '0000-00-00' AND
+                  TERMIN184 = '0000-00-00' AND
+                  TERMIN185 = '0000-00-00' AND
+                  TERMIN186 = '0000-00-00' AND
+                  TERMIN187 = '0000-00-00' AND
+                  TERMIN188 = '0000-00-00' AND
+                  TERMIN189 = '0000-00-00';
