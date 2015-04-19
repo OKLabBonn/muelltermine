@@ -1,31 +1,38 @@
 // LEERE ZEILE FINDEN
-(.*?),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Regex: (.*?),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+oder
+Regex: (.*?);;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+// LEERE ZEILEN IN TEXTMATE ENTFERNEN
+Regex: ^\s*$\n
 
 // DATUM IN CSV ÄNDERN
-find: ([0-9]{2})\.+([0-9]{2})\.+([0-9]{4})
-replace: \3-\2-\1
+Regex: find: ([0-9]{2})\.+([0-9]{2})\.+([0-9]{4})
+Regex: replace: \3-\2-\1
+Regex: replace: $3-$2-$1 (Textmate)
+
 
 // LOGIN ZU MYSQL
 mysql --host=localhost --user=root --password=rootpass --local-infile=1
+use muellkalender
 
 // CSV-DATEI LADEN (SQL)
 load data local infile 'sites/abfuhrtermine2015.csv' into table muellkalender  fields terminated by ','  enclosed by '"'  lines terminated by '\n';
+load data local infile 'sites/abfuhrtermine2015-2.csv' into table muellkalender  fields terminated by ';'  enclosed by '"'  lines terminated by '\n';
 
 // TABELLE ANLEGEN (SQL)
 CREATE TABLE muellkalender (
   PLANUNGNR int,
   PLAN_BEZ varchar(50),
-  PLAN_AB date,
-  PLAN_BIS date,
   AUFGTURNUS varchar(250),
-  STRABSCHNR varchar(250),
   STRASSE1 varchar(250),
-  ORT1 varchar(250),
   PLZ1 int,
   HNR_GE_AB int,
   HNR_GE_BIS int,
   HNR_UG_AB int,
   HNR_UG_BIS int,
+  HNR_POS int,
+  HNR_NEG int,
   TERMIN000 date,
   TERMIN001 date,
   TERMIN002 date,
@@ -215,7 +222,8 @@ CREATE TABLE muellkalender (
   TERMIN186 date,
   TERMIN187 date,
   TERMIN188 date,
-  TERMIN189 date
+  TERMIN189 date,
+  TERMIN190 date
 );
 
 // LEERE ELEMENTE LÖSCHEN (SQL)
@@ -408,4 +416,5 @@ DELETE FROM muellkalender WHERE TERMIN000 = '0000-00-00' AND
                   TERMIN186 = '0000-00-00' AND
                   TERMIN187 = '0000-00-00' AND
                   TERMIN188 = '0000-00-00' AND
-                  TERMIN189 = '0000-00-00';
+                  TERMIN189 = '0000-00-00' AND
+                  TERMIN190 = '0000-00-00';
