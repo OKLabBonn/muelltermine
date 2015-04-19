@@ -18,7 +18,7 @@
 
     <h2>Straßen</h2>
     <form method="get" action="index.php">
-      <?php $query = "SELECT strasse1, ort1, plz1 FROM muellkalender GROUP BY strasse1"; ?>
+      <?php $query = "SELECT strasse1 FROM muellkalender GROUP BY strasse1"; ?>
       <?php if ($result = $mysqli -> query($query)) : ?>
         <select name="userstreet">
           <?php while ($row = $result -> fetch_assoc()) : ?>
@@ -26,7 +26,7 @@
               $selected = '';
               if ($row['strasse1'] === $userstreet) { $selected = 'selected'; };
             ?>
-            <option value="<?php echo $row['strasse1']; ?>" <?php echo $selected; ?>><?php echo $row['strasse1']; ?>, <?php echo $row['plz1']; ?> <?php echo $row['ort1']; ?></option>
+            <option value="<?php echo $row['strasse1']; ?>" <?php echo $selected; ?>><?php echo $row['strasse1']; ?></option>
           <?php endwhile; ?>
         </select>
 
