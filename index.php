@@ -12,6 +12,8 @@
     include_once "_db-connect.php";
 
     $userstreet = $_GET['userstreet'];
+    $usernumber = $_GET['usernumber'];
+    $debug = $_GET['debug'];
     ?>
 
     <h2>Straßen</h2>
@@ -28,7 +30,7 @@
           <?php endwhile; ?>
         </select>
 
-        <input type="text" name="usernumber" />
+        <input type="text" name="usernumber" value="<?php echo $usernumber; ?>" />
         <input type="submit" />
 
       <?php endif; ?>
@@ -37,8 +39,8 @@
     <h2>Termine</h2>
     <?php $query = "SELECT * FROM muellkalender WHERE strasse1 LIKE '" . $userstreet . "' LIMIT 100"; ?>
 
-    <?php if ($userstreet && $result = $mysqli -> query($query)) : ?>
-      <h3>... für <?php echo "Straße: " . $userstreet; ?></h3>
+    <?php if ($userstreet && $usernumber && $result = $mysqli -> query($query)) : ?>
+      <h3>... für <?php echo $userstreet; ?> <?php echo $usernumber; ?></h3>
       <table border="1">
         <tr>
           <th><!-- PLANUNGNR --></th>
@@ -47,55 +49,72 @@
           <th><!-- PLAN_BIS --></th>
           <th>AUFGTURNUS</th>
           <th><!-- STRABSCHNR --></th>
-          <th>STRASSE1</th>
+          <th><!-- STRASSE1 --></th>
           <th><!-- ORT1 --></th>
           <th><!-- PLZ1 --></th>
-          <th>HNR_GE_AB</th>
-          <th>HNR_GE_BIS</th>
-          <th>HNR_UG_AB</th>
-          <th>HNR_UG_BIS</th>
+          <th><!-- HNR_GE_AB --></th>
+          <th><!-- HNR_GE_BIS --></th>
+          <th><!-- HNR_UG_AB --></th>
+          <th><!-- HNR_UG_BIS --></th>
         </tr>
 
         <?php while ($row = $result -> fetch_assoc()) : ?>
-          <tr>
-            <td><?php //echo $row['PLANUNGNR']; ?></td>
-            <td><?php echo $row['PLAN_BEZ']; ?></td>
-            <td><?php //echo $row['PLAN_AB']; ?></td>
-            <td><?php //echo $row['PLAN_BIS']; ?></td>
-            <td><?php echo $row['AUFGTURNUS']; ?></td>
-            <td><?php //echo $row['STRABSCHNR']; ?></td>
-            <td><?php echo $row['STRASSE1']; ?></td>
-            <td><?php //echo $row['ORT1']; ?></td>
-            <td><?php //echo $row['PLZ1']; ?></td>
-            <td><?php echo $row['HNR_GE_AB']; ?></td>
-            <td><?php echo $row['HNR_GE_BIS']; ?></td>
-            <td><?php echo $row['HNR_UG_AB']; ?></td>
-            <td><?php echo $row['HNR_UG_BIS']; ?></td>
+          <?php
 
-            <?php for ($i = 0; $i <= 189; $i++) : ?>
+            $show = false;
 
-              <?php $i = str_pad($i, 3, "0", STR_PAD_LEFT); ?>
+            // Hausnummer überprüfen
+            if ($usernumber % 2 == 0) {
+              // echo "even";
+              if ($usernumber >= $row['HNR_GE_AB'] && $usernumber <= $row['HNR_GE_BIS']) { $show = true; }
 
-              <?php if ($row['TERMIN' . $i] != '0000-00-00') : ?>
+            } else {
+              // echo "odd";
+              if ($usernumber >= $row['HNR_UG_AB'] && $usernumber <= $row['HNR_UG_BIS']) { $show = true; }
 
-                <?php $date = strtotime($row['TERMIN' . $i]); ?>
+            }
+          ?>
 
-                <td <?php if ($date < strtotime(date('Y-m-d'))) : ?>style="color: gray;"<?php endif; ?>>
+            <?php if ($show || $debug) : ?>
+              <tr>
+                <td><?php //echo $row['PLANUNGNR']; ?></td>
+                <td><?php echo $row['PLAN_BEZ']; ?></td>
+                <td><?php //echo $row['PLAN_AB']; ?></td>
+                <td><?php //echo $row['PLAN_BIS']; ?></td>
+                <td><?php echo $row['AUFGTURNUS']; ?></td>
+                <td><?php //echo $row['STRABSCHNR']; ?></td>
+                <td><?php //echo $row['STRASSE1']; ?></td>
+                <td><?php //echo $row['ORT1']; ?></td>
+                <td><?php //echo $row['PLZ1']; ?></td>
+                <td><?php //echo $row['HNR_GE_AB']; ?></td>
+                <td><?php //echo $row['HNR_GE_BIS']; ?></td>
+                <td><?php //echo $row['HNR_UG_AB']; ?></td>
+                <td><?php //echo $row['HNR_UG_BIS']; ?></td>
 
-                  <?php echo date('d.m.Y', $date); ?>
+                <?php for ($i = 0; $i <= 189; $i++) : ?>
 
-                </td>
+                  <?php $i = str_pad($i, 3, "0", STR_PAD_LEFT); ?>
 
-              <?php endif; ?>
+                  <?php if ($row['TERMIN' . $i] != '0000-00-00') : ?>
 
-            <?php endfor; ?>
+                    <?php $date = strtotime($row['TERMIN' . $i]); ?>
 
-          </tr>
+                    <td <?php if ($date < strtotime(date('Y-m-d'))) : ?>style="color: gray;"<?php endif; ?>>
 
+                      <?php echo date('d.m.Y', $date); ?>
+
+                    </td>
+
+                  <?php endif; ?>
+
+                <?php endfor; ?>
+
+              </tr>
+            <?php endif; ?>
         <?php endwhile; ?>
       </table>
     <?php else : ?>
-        <p>Bitte eine Straße auswählen.</p>
+        <p>Bitte eine Straße auswählen und eine Hausnummer angeben.</p>
     <?php endif; ?>
   </body>
 </html>
